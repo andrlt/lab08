@@ -4,11 +4,14 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
+import java.awt.Button;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
+
+import javax.swing.BoxLayout;
 
 /**
  * This class is a simple application that writes a random number on a file.
@@ -22,6 +25,16 @@ public class MiniGUI {
     private static final int PROPORTION = 5;
     private final Random randomGenerator = new Random();
     private final JFrame frame = new JFrame(TITLE);
+
+    /*
+    private void actListGenerateRandom (JButton write2) {
+        write2.addActionListener(new ActionListener() {
+            public void actionPerformed (ActionEvent e) {
+                System.out.println(randomGenerator.nextInt());
+            }
+        });        
+    }
+    */
 
     /**
      * Creates a new {@link MiniGUI}.
@@ -42,6 +55,13 @@ public class MiniGUI {
                 System.out.println(randomGenerator.nextInt());
             }
         });
+
+
+        final JPanel panel = new JPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
+        panel.add(write, BorderLayout.CENTER);
+        frame.setContentPane(panel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     private void display() {
